@@ -1,17 +1,18 @@
-pipeline{
+pipeline {
     agent any
 
     stages {
-        stage ('image build') {
+        stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build ("flaskapp:latest")
+                    docker.build("flask-devops-app:latest")
                 }
             }
         }
-        stage ('containerization') {
+
+        stage('Run Container') {
             steps {
-                sh 'docker run -d -p 5000:5000 --name pythonapp flaskapp:latest'
+                sh 'docker run -d -p 5000:5000 flask-devops-app:latest'
             }
         }
     }
