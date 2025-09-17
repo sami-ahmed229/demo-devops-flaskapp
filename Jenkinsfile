@@ -5,7 +5,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build("flask-devops-app:latest")
+                    docker.build("mohammedsami99852/flaskapp:v1")
                 }
             }
         }
