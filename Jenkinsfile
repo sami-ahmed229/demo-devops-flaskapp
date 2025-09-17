@@ -9,11 +9,7 @@ pipeline {
                 }
             }
         }
-        stage('Run Container') {
-            steps {
-                sh 'docker run -d -p 5000:5000 flask-devops-app:latest'
-            }
-        }
+        
         stage('push docker image') {
             steps {
                 withCredentials ([usernamepassword(credentialsId: 'dockerhubcredentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
